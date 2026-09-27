@@ -23,7 +23,8 @@ python -m cdr run --scenario scenarios/checkout-latency-cascade.yaml --mode mock
 Mock mode simulates telemetry deterministically so the full pipeline, report generation and
 dashboard sync can run without Docker, k6 or Toxiproxy. Live mode starts the Compose lab, records
 custom k6 telemetry, injects a Toxiproxy fault, builds Bob's checkoutservice patch as a new image
-and runs the identical experiment again. It fails closed if a required tool or real patch is missing.
+and runs the identical experiment again. It requires an authenticated Bob Shell and fails closed
+if Bob, a required tool or a real patch is missing.
 
 ## Configuration
 

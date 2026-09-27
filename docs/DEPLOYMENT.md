@@ -61,7 +61,9 @@ python -m cdr run --scenario scenarios/checkout-latency-cascade.yaml --mode live
 
 The runner starts Compose, executes k6, injects and removes the Toxiproxy fault, builds the real
 Bob-patched checkoutservice image and repeats the experiment. Docker Desktop and k6 must already
-be installed. Fault injection and manual cleanup commands are documented in `infra/README.md`.
+be installed, and Bob Shell must be authenticated with `BOB_API_KEY`. Live mode fails before
+starting chaos when Bob is unavailable, so a successful live run is always attributable to a real
+Bob patch. Fault injection and manual cleanup commands are documented in `infra/README.md`.
 
 ## 5. IBM Cloud Code Engine (stretch)
 

@@ -1,9 +1,9 @@
 # How IBM Bob 2.0 is used
 
-Bob 2.0 is the development partner that builds CDR. It is not a runtime dependency — the product
-uses watsonx.ai Granite for runtime analysis — but every significant piece of the repository is
-planned, written, reviewed and debugged with Bob in the loop. This is exactly what the hackathon
-asks for: a project that showcases IBM Bob IDE as a core component of the build.
+Bob 2.0 is both the development partner that builds CDR and the primary runtime repair agent.
+During a live run, IBM Bob Shell reads the cloned target repository, applies the resilience fix,
+and the runner verifies the resulting service under the identical chaos scenario. watsonx.ai
+Granite and deterministic rules remain fallbacks for mock or Bob-unavailable runs.
 
 ## Bob Shell (headless automation)
 

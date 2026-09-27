@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     "Chaos + load pipeline that classifies failures, generates refactor pull requests and verifies resilience. Built with IBM Bob 2.0.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"

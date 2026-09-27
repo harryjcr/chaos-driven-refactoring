@@ -49,6 +49,11 @@ class Pipeline:
 
         live_lab = LiveLab(self.settings, run_id) if run_mode == "live" else None
         if live_lab is not None:
+            if not self.repairer.available:
+                raise RuntimeError(
+                    "live mode requires IBM Bob Shell: configure BOB_API_KEY and ensure the bob "
+                    "binary is available on PATH"
+                )
             live_lab.prepare()
             telemetry = live_lab.capture(scenario, "before")
         else:

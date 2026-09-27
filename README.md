@@ -53,8 +53,9 @@ python -m cdr watch --pace 6 # adds a pause per phase, useful to watch progress 
 The API route needs `SUPABASE_SERVICE_ROLE_KEY` on Vercel (server-side only); the worker needs
 `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` locally. The dashboard refreshes active runs every
 5 seconds and shows a progress bar with the current phase (queued → chaos → classification →
-diagnosis → verification). Bob 2.0 is also the primary runtime repair agent; watsonx Granite and
-deterministic rules are fallback analyzers — see `docs/BOB_USAGE.md`.
+diagnosis → verification). IBM Bob Shell is the primary runtime repair agent: it reads the cloned
+repository, applies the real resilience diff and is required for live verification. watsonx Granite
+and deterministic rules are fallback analyzers for mock runs — see `docs/BOB_USAGE.md`.
 
 ### Runner (no Docker required in mock mode)
 

@@ -65,3 +65,18 @@ def test_pipeline_writes_json_and_markdown_artifacts(tmp_path):
     assert "Before vs after" in report
     assert "Root cause" in report
     assert "Verification" in report
+
+
+def test_live_pipeline_requires_bob_before_starting_chaos(tmp_path):
+    settings = make_settings(tmp_path)
+    settings.bob_api_key = ""
+    settings.bob_binary = "cdr-bob-test-binary-not-installed"
+    settings.bob_patches = True
+    scenario = load_scenario(SCENARIOS_DIR / "checkout-latency-cascade.yaml")
+
+    try:
+        Pipeline(settings).run(scenario, mode="live")
+    except RuntimeError as error:
+        assert "live mode requires IBM Bob Shell" in str(error)
+    else:
+        raise AssertionError("live mode must not start without IBM Bob Shell")
